@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component">
+    <h:head>
+        <title>Job Application</title>
+        <ice:outputStyle href="css/common.css" />
+        <script type="text/javascript" src="js/jquery1.9.js"></script>      
+        <script type="text/javascript" src="js/amcharts7.js"></script> 
+        <script type="text/javascript" src="js/chart/piechart.js"></script> 
+        <script type="text/javascript" src="js/raphael.js"></script> 
+        <script type="text/javascript" src="js/easing.js"></script>
+         
+    </h:head>
+    <h:body >
+    
+	<ice:form partialSubmit="true">
+		<ui:param name="backingbean" value="#{DepAnylisisBackingBean}"></ui:param>
+        <ice:messages globalOnly="true" />
+        
+        <ice:messages globalOnly="true" />
+        
+        <ice:panelGroup styleClass="title ">
+        	<ice:outputLabel styleClass="margin_l1" value="#{msgs.dep_title_text}"/>
+        	<ice:commandLink href="login.jsf">login</ice:commandLink> 
+        </ice:panelGroup>
+        
+        <ice:panelGroup styleClass="inputArea left1">
+	        <ice:panelGrid columns="5">
+	        	<ice:outputLabel value="#{msgs.dep_input_amount_text}"/>
+	        	<ice:inputText styleClass="itemNumberInp"
+	        				   onkeyup="this.value=this.value.replace(/\D/g,'');" 
+	        				   onblur="this.value=this.value.replace(/\D/g,'');"
+	        				   value="#{backingbean.depListSize}" ></ice:inputText>
+	        	<ice:commandButton styleClass="button" value="Create" action="#{backingbean.initList}"></ice:commandButton>
+	        	
+	        </ice:panelGrid>
+	        
+	        <ice:panelGroup styleClass="grid6 lefttext" rendered="#{!(empty backingbean.issueList)}">
+		        <ice:outputLabel styleClass="lefttext left2" value="#{msgs.class_name_title}">
+		        </ice:outputLabel>
+		        <ice:outputLabel styleClass="left3" value="#{msgs.amount_title}">
+		        </ice:outputLabel>
+	        </ice:panelGroup>
+	        #{applicantForm.userName}
+	        <ice:panelGroup id="issue_list" styleClass="scroll">
+		        <ice:panelGrid columns="3" rendered="#{!(empty backingbean.issueList)}">
+				<ui:repeat value="#{backingbean.issueList}" var="issue">
+					<ice:panelGroup styleClass="width5 floatl">
+						<ice:panelGroup styleClass="width3 floatl">#{issue.num}</ice:panelGroup>
+						<h:inputText size="32" name="issueName" value="#{issue.issueName}" 
+									 valueChangeListener="#{backingbean.emptyCheck}"
+									 styleClass="floatl"></h:inputText>
+						<h:inputText size="16" name="issueAmount"
+									 styleClass="floatl"
+									 onkeyup="this.value=this.value.replace(/\D/g,'');" 
+									 onblur="this.value=this.value.replace(/\D/g,'');"
+									 value="#{issue.issueAmount}" valueChangeListener="#{backingbean.emptyCheck}"></h:inputText>
+						<ice:commandButton styleClass="button floatl" value="#{msgs.del_item_title}" action="#{backingbean.delItem}">
+							<f:setPropertyActionListener target="#{backingbean.currentIdx}" value="#{issue.num}">
+							</f:setPropertyActionListener>
+						</ice:commandButton>
+						<ice:panelGroup styleClass="error_font width4 floatl"
+										rendered="#{issue.flag eq 1}">
+							<ice:outputLabel value="#{msgs.empty_error_message}" ></ice:outputLabel>
+						</ice:panelGroup>
+					</ice:panelGroup>
+				</ui:repeat>
+				<br/>
+					<ice:panelGroup styleClass="width5">
+					</ice:panelGroup>
+					<ice:panelGroup>
+						<ice:outputText value="" styleClass="floatl margin_l1 ">
+						</ice:outputText>
+						<ice:outputText value="" styleClass="floatl width4 align_left">
+						</ice:outputText>
+						<ice:commandButton styleClass="button margin_l2" value="#{msgs.add_item_title}" action="#{backingbean.addItem}">
+						</ice:commandButton>
+						<ice:commandButton styleClass="button" 
+			        					   value="#{msgs.submitApplication}" action="#{backingbean.getJSONData}"
+								   		   partialSubmit="false"/>	
+					</ice:panelGroup>
+	        	</ice:panelGrid>
+        	</ice:panelGroup>
+        	        
+        </ice:panelGroup>
+        
+		<ice:panelGroup rendered="#{!(empty backingbean.issueList) and (backingbean.flag eq 0)}">
+			<ice:panelGroup styleClass="title">
+				<ice:outputLabel styleClass="margin_l1" value="#{msgs.table_result}"/>
+			</ice:panelGroup>
+			<ice:panelGroup styleClass="tablearea left1 " >
+				<ice:panelGroup styleClass="top1 center">
+					<ice:panelGroup styleClass="grid4 titlebg ">
+								<h:outputLabel name="issueNum" value="#{msgs.dep_property_No}"></h:outputLabel>
+							</ice:panelGroup>
+							<ice:panelGroup styleClass="titlebg grid2">
+								<h:outputLabel name="issueName" value="#{msgs.dep_property_name}"></h:outputLabel>
+							</ice:panelGroup>
+							<ice:panelGroup styleClass="titlebg grid3">
+								<h:outputLabel name="issueAmount"
+											   value="#{msgs.dep_property_amount}"></h:outputLabel>
+							</ice:panelGroup>
+							<ice:panelGroup styleClass="titlebg grid3 borderright">
+								<h:outputLabel name="issuePersentage" value="#{msgs.dep_property_persentage}"></h:outputLabel>
+							</ice:panelGroup>
+							<ice:panelGroup styleClass="clear">
+					</ice:panelGroup>
+				</ice:panelGroup>
+				
+				<ice:panelGroup styleClass="bottom1">
+					<ui:repeat value="#{backingbean.issueList}" var="issue">
+						<ice:panelGroup>
+							<ice:panelGroup styleClass="tableItem grid4">
+							<h:outputLabel name="issueNum" value="#{issue.num}"></h:outputLabel>
+							</ice:panelGroup>
+							<ice:panelGroup styleClass="tableItem grid2">
+								<h:outputLabel name="issueName" value="#{issue.issueName}"></h:outputLabel>
+							</ice:panelGroup>
+							<ice:panelGroup styleClass="tableItem grid3">
+								<h:outputLabel name="issueAmount"
+											   value="#{issue.issueAmount}"></h:outputLabel>
+							</ice:panelGroup>
+							<ice:panelGroup styleClass="tableItem grid3 borderright">
+								<h:outputLabel name="issuePersentage" value="#{issue.persentage}"></h:outputLabel>
+							</ice:panelGroup>
+							<ice:panelGroup styleClass="clear">
+							</ice:panelGroup>
+						</ice:panelGroup>
+					</ui:repeat>
+					<ice:panelGroup styleClass="tableItem grid7 borderright">
+						<ice:panelGroup styleClass="floatr">
+							<ice:outputText value="#{msgs.total_text}" styleClass="floatl margin_l1 margin_r2">
+							</ice:outputText>
+							<ice:outputText value="#{backingbean.total}" styleClass="floatl align_left margin_r1">
+							</ice:outputText>
+						</ice:panelGroup>
+					</ice:panelGroup>
+				</ice:panelGroup>
+			</ice:panelGroup>
+		</ice:panelGroup>
+						   
+ 	  	<ice:panelGroup id="chartscript" rendered="#{!(empty backingbean.depInfoJSONData) and backingbean.flag eq 0}">
+ 		  	<script type="text/javascript"> 
+ 		 	//<![CDATA[
+ 		 	    $('#chartArea').html("");
+ 				var JsonData = #{backingbean.depInfoJSONData};
+ 				displayPieChart("chartArea",JsonData,function(){});
+ 			       
+ 				//]]>
+			</script> 
+			
+ 	   	</ice:panelGroup>
+		
+		<ice:panelGroup styleClass="chartarea" rendered="#{!(empty backingbean.depInfoJSONData) and backingbean.list_flag eq 0}">
+			<ice:panelGroup styleClass="chartTitle scroll">
+				<ice:outputLabel styleClass="margin_l1" value="#{msgs.result_chart_title}"/>
+			</ice:panelGroup>
+				<div id="chartArea" class="chartarea scroll_legend" >
+				
+				</div>
+		</ice:panelGroup>
+	</ice:form>
+    </h:body>
+</html>

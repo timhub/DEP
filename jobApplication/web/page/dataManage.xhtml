@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component">
+<ui:composition template="common/pageTemplate.xhtml">
+	<ui:define name="content">
+	<ui:param name="backingbean" value="#{dapDataManageBackingBean}"></ui:param>
+	<ice:form>
+		<ice:panelGroup styleClass="margin_left1">
+       		<ice:outputLabel value="Data Table" styleClass="headertext"></ice:outputLabel>
+       	</ice:panelGroup>
+       	<div class="clear"></div>
+       	<br/>
+       	<ice:panelGroup styleClass="floatleft margin_left1">
+	       	<ice:inputText value="#{backingbean.baseUrl}"></ice:inputText>
+	       	<ice:commandLink value="Get Data" styleClass="button_style button_big" action="#{backingbean.getComponentData}"></ice:commandLink>
+	       	<a href="editCategory.jsf" 
+			   class="lightview button_style button_big"
+			   data-lightview-type="iframe" 
+   			   data-lightview-options="width: 600, height: 400"
+			  >Edit Category</a>
+       	</ice:panelGroup>
+       	<br/>
+       	<div class="space"></div>
+       	<table width="90%" border="1" class="tablestyle smalltext" cellpadding="0" cellspacing="0">
+       		<tr>
+       			<th width="8%" class="headerstyle colstyle">Id</th>
+       			<th width="10%" class="headerstyle colstyle">Severity</th>
+       			<th width="7%" class="headerstyle colstyle">Priority</th>
+       			<th width="10%" class="headerstyle colstyle">Assigned_to</th>
+       			<th width="10%" class="headerstyle colstyle">Status</th>
+       			<th width="35%" class="headerstyle colstyle">Short_desc</th>
+       			<th width="10%" class="headerstyle colstyle">Classification</th>
+       			<th width="10%" class="headerstyle colstyle">Component</th>
+       		</tr>
+       		<ui:repeat value="#{depAnaysisBackingBean.dataList}" var="item">
+       			<tr>
+       				<td class="colstyle">
+       					<h:outputLabel name="issueNum" value="#{item.bug_id}"></h:outputLabel>
+       				</td>
+       				<td class="colstyle">
+       					<h:outputLabel name="issueNum" value="#{item.bug_severity}"></h:outputLabel>
+       				</td>
+       				<td class="colstyle">
+       					<h:outputLabel name="issueNum" value="#{item.priority}"></h:outputLabel>
+       				</td>
+       				<td class="colstyle">
+       					<h:outputLabel name="issueNum" value="#{item.assigned_to}"></h:outputLabel>
+       				</td>
+       				<td class="colstyle">
+       					<h:outputLabel name="issueNum" value="#{item.bug_status}"></h:outputLabel>
+       				</td>
+       				<td class="colstyle">
+       					<h:outputLabel name="issueNum" value="#{item.short_desc}"></h:outputLabel>
+       				</td>
+       				<td class="colstyle">
+       					<h:outputLabel name="issueNum" value="#{item.classification}"></h:outputLabel>
+       				</td>
+       				<td class="colstyle">
+       					<h:outputLabel name="issueNum" value="#{item.component}" rendered="#{item.componentFlag}"></h:outputLabel>
+       				</td>
+       			</tr>
+       		</ui:repeat>
+       	</table>
+       	
+       	<div class="space"></div>
+       	
+       	<ice:panelGroup>
+       		<ice:commandLink value="Analysis" styleClass="button_style button_big" action="#{backingbean.viewAnalysisPage}">
+       		</ice:commandLink>
+       	</ice:panelGroup>
+       	
+       	<div class="space"></div>
+   	</ice:form>
+	</ui:define>
+</ui:composition>
+</f:view>

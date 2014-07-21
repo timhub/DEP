@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component">
+<ui:composition template="common/secondaryPageTemplate.xhtml">
+	<ui:define name="popupContent">
+		<ice:panelGroup id="editCategoryContent" styleClass="grid_4 height_8 auto_margin">
+			<ice:panelGroup id="editCategoryHeader" styleClass="fullwidth">
+				<ice:outputText value="Edit Category" styleClass="smallHeaderText floatleft redheader">
+				</ice:outputText>
+			</ice:panelGroup>
+			<div class="clear"></div>
+			<div class="dotseperator height_4"></div>
+			
+<!-- 			<ice:outputText value="Can not add an empty node" rendered="#{!dapBugTypeModificationBackingBean.addNewTypeFlag}"></ice:outputText> -->
+			
+			<ui:repeat var="item" value="#{dapBugTypeModificationBackingBean.bugTypeList}">
+				<ice:inputText value="#{item.bugTypeCategory}" ></ice:inputText>
+			</ui:repeat>
+		</ice:panelGroup>
+	</ui:define>
+</ui:composition>
+</f:view>

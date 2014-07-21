@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component">
+<ui:composition template="common/pageTemplate.xhtml">
+	<ui:define name="content">
+	<ice:form partialSubmit="true">
+        <ice:panelGroup>
+        	<ice:panelGroup styleClass="margin_left1">
+        		<ice:outputLabel value="Result Table" styleClass="headertext"></ice:outputLabel>
+        	</ice:panelGroup>
+        	<div class="clear"></div>
+        	<br/>
+        	<div class="space"></div>
+        	<table width="50%" border="1px" class="tablestyle" cellpadding="5" cellspacing="0">
+        		<tr style="background-color: #eeeeee">
+        			<th width="20%" class="headerstyle colstyle">Category</th>
+        			<th width="40%" class="headerstyle colstyle">Amount</th>
+        			<th width="40%" class="headerstyle colstyle">Percentage</th>
+        		</tr>
+        		<ui:repeat value="#{depAnaysisBackingBean.classList}" var="item">
+        			<tr>
+        				<td class="colstyle">
+        					<h:outputLabel name="issueNum" value="#{item.colData}"></h:outputLabel>
+        				</td>
+        				<td class="colstyle">
+        					<h:outputLabel name="issueName" value="#{item.count}"></h:outputLabel>
+        				</td>
+        				<td class="colstyle">
+        					<h:outputLabel name="issueAmount" value="#{item.percentage}"></h:outputLabel>
+        				</td>
+        			</tr>
+			 	</ui:repeat>
+        	</table>
+        </ice:panelGroup>
+        <br/>
+        <ice:panelGroup styleClass="margin_left1">
+        		<ice:outputLabel value="Result Chart" styleClass="headertext"></ice:outputLabel>
+        	</ice:panelGroup>
+        	<div class="clear"></div>
+        	<br/>
+        <div id="chartArea" style="width:800px; height:300px;">
+        </div>
+       <script type="text/javascript">
+			var JsonData = #{depAnaysisBackingBean.chartJson};
+			displayDAPPieChart("chartArea",JsonData); 
+       </script>
+	</ice:form>
+</ui:define>
+</ui:composition>
+</f:view>

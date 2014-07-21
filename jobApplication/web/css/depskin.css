@@ -1,0 +1,59 @@
+@CHARSET "ISO-8859-1";
+
+.html{height:100%;}
+body{margin-bottom:0px; background-color: #252525;margin-left: auto;margin-right: auto;font-family: "Segoe UI Web Light","Segoe UI Light","Segoe UI Web Regular","Segoe UI","Segoe UI Symbol","Helvetica Neue",Arial;margin-top: 0px;}
+a{text-decoration: none;}
+
+/* grid set*/
+.grid_1{width:993px;}
+.grid_2{width:500px;}
+.grid_3{width:600px;}
+.grid_4{width:700px;}
+.gridbox2{width:200px;height:25px;}
+.gridbox3{width:100px;height:25px;}
+.gridbox4{width:25px;height: 25px;}
+
+/*height set*/
+.height_1{height:163px;}
+.height_full{height:100%;}
+.height_2{height:100px;}
+.height_3{height:158px;}
+.height_4{height:15px;}
+.height_5{height:400px;}
+.height_6{height:600px;}
+.height_7{height:500px;}
+.space{height:35px;}
+
+/* position */
+.margin_top0{margin-top:0px;}
+.auto_margin{margin-left: auto;margin-right: auto;}
+.margin_bottom0{margin-bottom: 0px;}
+.fix_bottom{bottom: 0px;}
+.margin_left1{margin-left: 50px;float: left;}
+.clear{clear: both;}
+.floatleft{float:left;}
+.floatright{float:right;}
+
+/*font*/
+.headertext{font-size: 3em;font-weight: 100;}
+.smalltext{font-size: 0.8em;font-family:"Arial"; }
+h3.popupHeader{color: #e33e3f;}
+
+/* specific sets */
+.header_display{background-image: url("../page/image/header_pic.png");}
+.panel_bg{background-color: #FFFFFF;}
+.footer_red{background-color: #b71b1c;}
+.text_center{text-align: center;}
+.button_style{background-color:#b71b1c;border: 0px;color: #FFFFFF;cursor: pointer;font-family: "Segoe UI Web Light","Segoe UI Light","Segoe UI Web Regular","Segoe UI","Segoe UI Symbol","Helvetica Neue",Arial;}
+.button_style:hover{background-color: #e33e3f;}
+.button_big{height: 35px;width: 110px; font-size: 1.5em;padding-bottom: 5px;}
+.tableItem{float:left;font-size: 12px;line-height:25px;color: #333333;background-color:#FFFFFF;border-left: 1px;border-left-color: #CCCCCC;border-left-style: solid;border-bottom: 1px;border-bottom-color: #CCCCCC;border-bottom-style: solid;}
+.tablestyle{border: 1px;border-color: #666666;margin-left: auto;margin-right: auto;border-width: 1px 0 0 1px;}
+.colstyle{border-color: #aaaaaa;border-width:0 1px 1px 0;height: 20px;}
+table th.headerstyle{font-weight: lighter; background-color: #EEEEEE;height: 25px;}
+input{height:35px; width: 500px; line-height: 35px;}
+.hide{display: none;}
+.lightboxContentbg{background-color: #FFFFFF;}
+
+
+

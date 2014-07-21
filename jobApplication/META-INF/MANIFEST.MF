@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: jobApplication
+Bundle-SymbolicName: jobApplication
+Bundle-Version: 1.0.0.qualifier
+Export-Package: training.jobapplication.bean.backing,
+ training.jobapplication.bean.model,
+ training.jobapplication.bean.support,
+ training.jobapplication.transfer
+Import-Package: javax.servlet,
+ javax.servlet.http;version="2.5.0"

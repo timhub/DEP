@@ -1,0 +1,322 @@
+@CHARSET "ISO-8859-1";
+
+
+a{
+	border: 0px;
+	text-decoration: none;
+	color: #666;
+}
+
+a:hover{
+	border: 0px;
+	text-decoration: none;
+	color: #999;
+}
+
+a:active{
+	border: 0px;
+	text-decoration: none;
+	color: #000;
+	top: 1px;
+}
+
+.button{
+	background-color:#494949;
+	color:#FFFFFF;
+	font-family:Arial;
+	border-top:2px #B6B6B5 solid;
+	border-left:2px #B6B6B5 solid;
+	border-right:2px #B6B6B5 solid;
+	border-bottom:2px #B6B6B5 solid;
+}
+
+.button:active{
+	background-color:#FFFFFF;
+	color:#494949;
+	font-family: "Arial";
+	border-top:2px #B6B6B5 solid;
+	border-left:2px #B6B6B5 solid;
+	border-right:2px #B6B6B5 solid;
+	border-bottom:2px #B6B6B5 solid;
+}
+
+body{
+	margin-left:auto;
+	margin-right:auto;
+	width:980px;
+	margin-top:0;
+	float:left;
+	
+}
+
+.navbutton{
+	background: -moz-linear-gradient(45deg, #F3F3F3 0%, #FFFFFF 48%, #F1F1F1 100%) repeat scroll 0 0 transparent;
+    border: 1px solid #D3D3D3;
+    box-shadow: 2px 2px 0 #FFFFFF inset, -2px 0 0 #FFFFFF inset, 0 2px 3px rgba(0, 0, 0, 0.07);
+    display: block;
+    padding: 14px 5px 8px;
+    float:left;
+}
+
+.grid1{
+	width:70px;
+	height:70px;
+	margin-left:15px;
+}
+
+.scroll{
+	overflow: auto;
+	max-height:300px;
+	overflow-x:hidden;
+}
+
+.scroll_legend{
+	overflow: auto;
+	height:350px;
+	overflow-x:hidden;
+}
+
+
+.margin_l1{
+	margin-left: 25px;
+}
+
+.margin_l2{
+	margin-left: 94px;
+}
+
+.margin_r1{
+	margin-right: 30px;
+}
+
+.margin_r2{
+	margin-right: 10px;
+}
+
+.tableItem{
+	float:left;
+	font-size: 12px;
+	line-height:25px;
+	font-family: "Arial";
+	color: #333333;
+	background-color:#FFFFFF;
+	border-left: 1px;
+	border-left-color: #CCCCCC;
+	border-left-style: solid;
+	border-bottom: 1px;
+	border-bottom-color: #CCCCCC;
+	border-bottom-style: solid;
+}
+
+.grid2{
+	width:200px;
+	height:25px;
+}
+
+.grid3{
+	width:100px;
+	height:25px;
+}
+
+.grid4{
+	width:25px;
+	height: 25px;
+}
+
+.grid5{
+	width:540px;
+	height:25px;
+}
+
+.grid6{
+	width: 660px;
+	height: 25px;
+}
+
+.grid7{
+	width: 428px;
+	height:25px;
+}
+
+.lefttext{
+	text-align: left;
+}
+
+.floatl{
+	float:left;
+}
+
+.floatr{
+	float: right;
+}
+
+.width1{
+	width: 211px;
+}
+
+.width2{
+	width: 115px;
+}
+
+.width3{
+	width: 25px;
+}
+
+.width4{
+	width: 170px;
+}
+
+.width5{
+	width: 600px;
+}
+
+.align_left{
+	text-align: left;
+}
+
+nav{
+	float:left;
+	width:980px;
+	hight:80px;
+	background: -ie-gradient(linear, 0 0, 0 100%, from(red), to(blue));
+}
+
+.textcenter{
+	text-align:center;
+}
+
+.container{
+	width:1000px;
+	height:300px;
+	float:left;
+}
+
+.tableRow{
+	background-color:#eee;
+}
+
+.itemNumberInp{
+	width:150px;
+}
+
+.commandButton{
+	
+}
+
+.center{
+	text-align: center;
+}
+
+.tablearea{
+	font-size: 12px;
+	line-height:25px;
+	min-height: 100px;
+	text-align:center;
+	font-family:Arial;
+	color:#FFFFFF;
+	background-color: #A7C457;
+	width:955px;
+}
+
+.dark_font{
+	color: #666666;
+}
+
+.clear{
+	clear: both;
+}
+
+.top1{
+	padding-top: 25px;
+}
+
+.left1{
+	padding-left: 25px;
+}
+
+.left2{
+	padding-left: 30px;
+}
+
+.left3{
+	padding-left: 170px;
+}
+.left4{
+	padding-left: 3px;
+}
+
+.bottom1{
+	padding-bottom: 50px;
+}
+
+.borderright{
+	border-right: 1px;
+	border-right-color: #CCCCCC;
+	border-right-style: solid;
+}
+
+.bordertop{
+	border-top: 1px;
+	border-top-color: #CCCCCC;
+	border-top-style: solid;
+}
+
+.titlebg{
+	float:left;
+	font-size: 12px;
+	line-height:25px;
+	font-family: "Arial";
+	background-color: #666666;
+	color:#FFFFFF;
+	border-top: 1px;
+	border-top-color: #CCCCCC;
+	border-top-style: solid;
+	border-left: 1px;
+	border-left-color: #CCCCCC;
+	border-left-style: solid;
+}
+
+.floatl{
+	float: left;
+}
+
+.error_font{
+	color: #FF5401;
+}
+
+.chartarea{
+	border-top:2px #B6B6B5 thin;
+	border-left:2px #B6B6B5 thin;
+	border-right:2px #B6B6B5 thin;
+	border-bottom:2px #B6B6B5 thin;
+	border-color:#666;
+	width: 980px;
+	height: 350px;
+}
+
+.chartTitle{
+	font-family: Arial;
+	background-color: #555;
+	color: #FFF;
+	height:25px;
+}
+
+.inputArea{
+	font-size: 12px;
+	line-height:25px;
+	min-height: 100px;
+	text-align:center;
+	font-family:Arial;
+	color:#FFFFFF;
+	background-color: #A7C457;
+	width:955px;
+}
+
+.title{
+	top:0;
+	font-family: Arial;
+	background-color: #555;
+	color: #FFF;
+	height:25px;
+}
+

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component">
+   <h:head>
+       <title>DEP Tool</title>
+       <ice:outputStyle href="#{msgs.base_content_path}css/depskin.css" />
+       <ice:outputStyle href="#{msgs.base_content_path}css/lightview.css" />
+       <script type="text/javascript" src="#{msgs.base_content_path}js/jquery1.9.js"></script>      
+       <script type="text/javascript" src="#{msgs.base_content_path}js/amcharts.js"></script> 
+       <script type="text/javascript" src="#{msgs.base_content_path}js/chart/DAPpiechart.js"></script> 
+       <script type="text/javascript" src="#{msgs.base_content_path}js/easing.js"></script>
+       <script type="text/javascript" src="#{msgs.base_content_path}js/lightview/lightview.js"></script>
+       <script type="text/javascript" src="#{msgs.base_content_path}js/lightview/spinners.min.js"></script>
+        <!--[if lt IE 9]>
+		  <script type="text/javascript" src="#{msgs.base_content_path}js/lightview/excanvas.js"></script>
+		<![endif]-->
+   </h:head>
+    
+   <h:body style="margin-top:0px;" styleClass="backimage padding2">
+	<ice:panelGroup styleClass="height_full">
+		<ice:panelGroup id="pagePanel" styleClass="shadow grid_1 auto_margin">
+			<ice:panelGroup id="pageContent" styleClass="auto_margin grid_1 panel_bg shadow">
+			   <ice:panelGroup id="page_header" styleClass=" header_display height_1 grid_1  margin_top0">
+		       </ice:panelGroup>
+	       
+		       <ice:panelGroup styleClass="grid_1 text_center padding1">
+		       	<ui:insert name="content"/>
+		       </ice:panelGroup>
+	       
+			</ice:panelGroup>
+			<ice:panelGroup id="page_footer" styleClass="footer_red height_2 auto_margin grid_1 fix_bottom shadowlight">
+			</ice:panelGroup>
+		</ice:panelGroup>
+	</ice:panelGroup>
+   </h:body>
+</html>

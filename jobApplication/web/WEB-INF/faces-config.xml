@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                                  http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+              version="2.0">
+	<application>
+        
+        <resource-bundle>
+            <base-name>messages</base-name>
+            <var>msgs</var>
+        </resource-bundle>
+        <message-bundle>JSF-override</message-bundle>
+	</application>
+	
+	<managed-bean>
+		<managed-bean-name>applicant</managed-bean-name>
+		<managed-bean-class>
+			training.jobapplication.bean.model.Applicant
+		</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>applicantForm</managed-bean-name>
+		<managed-bean-class>
+            training.jobapplication.bean.backing.ApplicantForm
+		</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<!-- Inject the Applicant model bean into the backing -->
+		<!-- bean in order to promote loose coupling -->
+		<managed-property>
+			<property-name>applicant</property-name>
+			<value>#{applicant}</value>
+		</managed-property>
+		<!-- Inject the provinceSupport bean into the -->
+		<!-- backing bean in order to promote loose coupling -->
+		<managed-property>
+			<property-name>provinceSupport</property-name>
+			<value>#{provinceSupport}</value>
+		</managed-property>
+    </managed-bean>
+    
+	<managed-bean>
+	    <managed-bean-name>provinceSupport</managed-bean-name>
+	    <managed-bean-class>
+	      training.jobapplication.bean.support.ProvinceSupport
+	    </managed-bean-class>
+	    <managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>DepAnylisisBackingBean</managed-bean-name>
+		<managed-bean-class>com.dep.demo.DAPAnylisisBackingBean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>SupervisorBackingBean</managed-bean-name>
+		<managed-bean-class>com.demo.supervisor.SupervisorBackingBean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>depAnaysisBackingBean</managed-bean-name>
+		<managed-bean-class>com.dep.demo.action.DAPAnaysisBackingBean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>	
+	
+	<managed-bean>
+		<managed-bean-name>dapDataManageBackingBean</managed-bean-name>
+		<managed-bean-class>com.dep.demo.DAPDataManageBackingBean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+       
+	<navigation-rule>
+		<from-view-id>/applicantForm.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/thankYou.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/noThanks.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>depAnaysis</from-outcome>
+			<to-view-id>/page/depAnaysis.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
+	
+	<navigation-rule>
+		<from-view-id>/supervisor/branch_detail.jsf</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/thankYou.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/noThanks.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/page/common/pageTemplate.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/thankYou.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/noThanks.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/thankYou.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/applicantForm.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/noThanks.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/applicantForm.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>

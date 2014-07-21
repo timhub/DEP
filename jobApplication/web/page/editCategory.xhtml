@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component">
+<ui:composition template="common/secondaryPageTemplate.xhtml">
+	<ui:define name="content">
+	<ui:param name="backingbean" value="#{dapDataManageBackingBean}"></ui:param>
+		<ice:panelGroup id="editCategoryContent" styleClass="grid_4 height_7 auto_margin">
+			<h3 class="popupHeader">
+				
+			</h3>
+		</ice:panelGroup>
+	</ui:define>
+</ui:composition>
+</f:view>

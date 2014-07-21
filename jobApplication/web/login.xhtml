@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	
+<head>
+<meta charset="UTF-8"/>
+<title>login page</title>
+<link rel="stylesheet" href="css/loginform.css" type="text/css" media="screen"/>
+<script type="text/javascript" src="js/core.js"></script>
+<script type="text/javascript">
+	window.history.forward(1);
+</script>
+<style type="text/css">
+	input[type="submit"]{
+			color: #999;
+			padding: 5px 10px;
+			float: right;
+			margin: 40px 0;
+			border: 1px solid #000;
+			font-weight: lighter;
+			-moz-border-radius: 15px;
+			-webkit-border-radius: 15px;
+			border-radius: 15px;
+			background: #45484d;
+			background: -moz-linear-gradient(top, #222 0%, #111 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#222), color-stop(100%,#111));
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22222', endColorstr='#11111',GradientType=0 );
+			-moz-box-shadow: 0px 1px 1px #000, 0px 1px 0px rgba(255,255,255,.3) inset;
+			-webkit-box-shadow: 0px 1px 1px #000, 0px 1px 0px rgba(255,255,255,.3) inset;
+			box-shadow: 0px 1px 1px #000,0px 1px 0px rgba(255,255,255,.3) inset;
+			text-shadow: 0 1px 1px #000;
+			outline: none;
+			width:80px;
+		}
+</style>
+</head>
+<body id="home">
+	<ui:param name="backingBean" value="#{UserLoginBackingBean}"/>	
+		<ice:panelGroup styleClass="rain">
+			<ice:panelGroup styleClass="border start">
+			<ice:form styleClass="" id="loginform" action="testpage1.xhtml">
+			
+				<ice:outputLabel for="username">Username:</ice:outputLabel>
+				<ice:inputText name="username" value="#{backingBean.username}"/>
+				<ice:outputLabel for="password">Password:</ice:outputLabel>
+				<h:inputSecret name="password" value="#{backingBean.password}"/>
+				<ice:commandButton value="Login" partialSubmit="false" type="submit" action="#{backingBean.checkUserData}" id="loginbt">
+				</ice:commandButton>
+				
+			</ice:form>
+		</ice:panelGroup>
+		</ice:panelGroup>
+		<ice:panelGroup rendered="#{backingBean.checkUserData eq 1}">
+			<h:outputText>Password is incorrect, please check</h:outputText>
+		</ice:panelGroup>
+		<ice:panelGroup rendered="#{backingBean.checkUserData eq 2}">
+			<h:outputText>User does not exist!</h:outputText>
+		</ice:panelGroup>
+		<ice:panelGroup>
+			<a href="applicantForm.jsf" style="color:#FFFFFF;">DEP Page
+			</a>
+		</ice:panelGroup>
+		<canvas id="cavas" style="height:300px;width:300px;background-color:#FFFFFF;">
+		</canvas>
+</body>
+
+<script>
+	$(function(){
+	  var $form_inputs =   $('form input');
+	  var $rainbow_and_border = $('.rain, .border');
+	  /* Used to provide loping animations in fallback mode */
+	  $form_inputs.bind('focus', function(){
+		$rainbow_and_border.addClass('end').removeClass('unfocus start');
+	  });
+	  $form_inputs.bind('blur', function(){
+		$rainbow_and_border.addClass('unfocus start').removeClass('end');
+	  });
+	  $form_inputs.first().delay(800).queue(function() {
+		$(this).focus();
+	  });
+	  $("#canvas").click(function (){
+		 alert("test"); 
+	  });
+	});
+	
+</script>
+</html>

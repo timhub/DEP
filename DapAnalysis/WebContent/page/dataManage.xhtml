@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component">
+<ui:composition template="common/pageTemplate.xhtml">
+	<ui:define name="content">
+	<ui:param name="backingbean" value="#{dapDataManageBackingBean}"></ui:param>
+	<ice:form>
+		<ice:panelGroup styleClass="margin_left1">
+       		<ice:outputLabel value="Data Table" styleClass="headertext"></ice:outputLabel>
+       	</ice:panelGroup>
+       	<div class="clear"></div>
+       	<br/>
+       	<ice:panelGroup styleClass="floatleft margin_left1">
+	       	<ice:inputText value="#{backingbean.baseUrl}"></ice:inputText>
+	       	<ice:commandLink value="Get Data" styleClass="button_style button_big" action="#{backingbean.getComponentData}"></ice:commandLink>
+	       	<a href="editCategory.jsf" 
+			   class="lightview button_style button_big"
+			   data-lightview-type="iframe" 
+   			   data-lightview-options="width: 750, height: 450, background: '#222'"
+			  >Edit Category</a>
+       	</ice:panelGroup>
+       	<br/>
+       	<div class="space"></div>
+       	<ice:panelGroup id="bugDetailListTitle" styleClass="shadowedge grid_5 auto_margin">
+       		<ice:panelGroup id="bugDetailHeader" styleClass="titleheader space textleft">
+       			<ice:outputText value="Bug List"/>
+       		</ice:panelGroup>
+       	</ice:panelGroup>
+       	<ice:panelGroup id="bugList" styleClass="shadowedge grid_5 auto_margin">
+       		<table border="0" class="tablestyle smalltext grid_5" cellpadding="0" cellspacing="0">
+	       		<ui:repeat value="#{depAnaysisBackingBean.dataList}" var="item" varStatus="vs">
+	       			<tr class="#{((vs.index % 2) eq 0)?'lightgreybg space':'space'}">
+	       				<td class="textleft padding_left1" width="10%">
+	       					<strong>
+	       						<ice:outputText value="Id:"/>
+	       					</strong>
+	       					<span style="cursor: pointer;" onmousedown="$('.#{item.bug_id}').toggle('slow','easeInOutExpo');">#{item.bug_id}</span>
+	       				</td>
+	       				<td class="textleft" width="25%">
+	       					<strong>
+	       						<ice:outputText value="Severity:"/>
+	       					</strong>
+	       					<span style="cursor: pointer;" onclick="$('.#{item.bug_id}').toggle('slow','easeInOutExpo');">#{item.bug_severity}</span>
+	       				</td>
+	       				<td class="textleft" width="65%">
+	       					<strong>
+	       						<ice:outputText value="Description:"/>
+	       					</strong>
+	       					<span style="cursor: pointer;" onclick="$('.#{item.bug_id}').toggle('slow','easeInOutExpo');">#{item.short_desc}</span>
+	       				</td>
+       				</tr>
+	       				
+	       				
+	       				
+	       				
+       				<tr class="#{item.bug_id} hide #{((vs.index % 2) eq 0)?'lightgreybg space':'space'}">
+	       				<td class="colstyle" colspan="3" align="right">
+	       					<table width="95%" align="right" cellpadding="5" cellspacing="0" class="highlightarea">
+	       						<tr  class="shadowedge">
+	       							<td width="40%">
+	       								<h:outputLabel name="issueNum" value="Priority#{item.priority}"></h:outputLabel>
+	       								<br/>
+	       								<br/>
+	       								<h:outputLabel name="issueNum" value="Assigned:#{item.assigned_to}"></h:outputLabel>
+	       								<br/>
+	       								<br/>
+	       								<h:outputLabel name="issueNum" value="Status:#{item.bug_status}"></h:outputLabel>
+	       							</td>
+	       							<td width="60%" style="vertical-align: top;">
+	       								<h:outputLabel name="issueNum" value="Component:#{item.component}"></h:outputLabel>
+	       								<br/>
+	       								<br/>
+	       								<h:outputLabel name="issueNum" value="Classification:#{item.classification}"></h:outputLabel>
+	       							</td>
+	       						</tr>
+	       					</table>
+	       				</td>
+	       			</tr>
+       			</ui:repeat>
+       		</table>
+       	</ice:panelGroup>
+       	
+       	<div class="space"></div>
+       	
+       	<ice:panelGroup>
+       		<ice:commandLink value="Analysis" styleClass="button_style button_big" action="#{backingbean.viewAnalysisPage}">
+       		</ice:commandLink>
+       	</ice:panelGroup>
+       	
+       	<div class="space"></div>
+   	</ice:form>
+	</ui:define>
+</ui:composition>
+</f:view>
